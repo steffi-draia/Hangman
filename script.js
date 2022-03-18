@@ -7,11 +7,11 @@ updateLivesLeft(livesLeft);
 function generateElements() {
 	let div1 = document.getElementById('div1');
 	for (let i = 0; i < word.length; ++i) {
-  	let inputBoxElement = document.createElement('input');
-    inputBoxElement.setAttribute("size", 5);
-    inputBoxElement.setAttribute("id", i);
-    div1.appendChild(inputBoxElement);
-  }
+		let inputBoxElement = document.createElement('input');
+		inputBoxElement.setAttribute("size", 5);
+		inputBoxElement.setAttribute("id", i);
+		div1.appendChild(inputBoxElement);
+	}
 }
 
 function updateLivesLeft(livesLeft) {
@@ -20,13 +20,13 @@ function updateLivesLeft(livesLeft) {
 
 function checkStatus() {
 	let showStatus = document.getElementById("showStatus");
-  if (currentLettersGuessed == word.length) {
-   	 showStatus.innerHTML = "Congrats! You guessed the word!";
-     document.getElementById("check").onclick = null;
-  } else if (livesLeft == 0) {
-  	showStatus.innerHTML = "Sorry! You lost";
-    document.getElementById("check").onclick = null;
-  }
+	if (currentLettersGuessed == word.length) {
+		showStatus.innerHTML = "Congrats! You guessed the word!";
+		document.getElementById("check").onclick = null;
+	} else if (livesLeft == 0) {
+		showStatus.innerHTML = "Sorry! You lost";
+		document.getElementById("check").onclick = null;
+	}
 }
 
 function changeImage(livesLeft) {
@@ -50,18 +50,18 @@ function changeImage(livesLeft) {
 
 function checkLetter() {
 	let userInput = document.getElementById('letter').value;
-  let x = false;
-  for (let i = 0; i < word.length; ++i) {
-  	if (word[i] == userInput && document.getElementById(i).value == "") {
-    	document.getElementById(i).value = word[i];
-      x = true;
-      ++currentLettersGuessed;
-    }
-  }
-  if (!x) {
-  	--livesLeft;
-    updateLivesLeft(livesLeft);
+	let x = false;
+	for (let i = 0; i < word.length; ++i) {
+		if (word[i] == userInput && document.getElementById(i).value == "") {
+			document.getElementById(i).value = word[i];
+			x = true;
+			++currentLettersGuessed;
+		}
+	}
+	if (!x) {
+		--livesLeft;
+		updateLivesLeft(livesLeft);
 		changeImage(livesLeft);
-  }
-  checkStatus();
+	}
+	checkStatus();
 }
